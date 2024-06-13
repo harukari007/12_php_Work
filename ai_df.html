@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ChatGPT API Demo</title>
+</head>
+
+<body>
+    <h1>ChatGPT API Demo</h1>
+    <form id="chat-form">
+        <label for="query">質問文を入力してください:</label>
+        <input type="text" id="query" name="query" required>
+        <button type="submit">送信</button>
+    </form>
+    <div id="response">
+        <h2>結果:</h2>
+        <p id="result-message"></p>
+    </div>
+
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const query = document.getElementById('query').value;
+            fetch('chat.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: query })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result-message').textContent = data.result_message;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+
+</html>
