@@ -12,7 +12,7 @@ check_session_id();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Easychat AI</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@ check_session_id();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.6.1/js/iziModal.min.js"></script>
     <script src="https://unpkg.com/ityped@1.0.2"></script>
     <fieldset>
-        <legend>Calorie Tracker 【ユーザー名： <?= $_SESSION['username'] ?>】 </legend>
+        <legend>Calorie Tracker <br>【ユーザー名： <?= $_SESSION['username'] ?>】 </legend>
         <a href="eatchat_read.php">一覧画面</a>
         <a href="eatchat_add_info.php">基本情報</a>
         <a href="eatchat_logout.php">ログアウト</a>

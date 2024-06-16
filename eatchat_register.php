@@ -16,7 +16,7 @@ include('functions.php');
 <body>
   <form action="eatchat_register_act.php" method="POST">
     <fieldset>
-      <legend>カロリートラッカー ユーザ登録画面</legend>
+      <legend>カロリートラッカー<br>ユーザ登録画面</legend>
       <div>
         ユーザネーム: <input type="text" name="username">
       </div>
