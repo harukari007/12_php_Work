@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 use Orhanerday\OpenAi\OpenAi;
 
-$open_ai_key = 'sk-proj-I26wqT7e1fO4eDiVECKLT3BlbkFJA10ZTCo1K364RuFQIk09';
+$open_ai_key = '';
 
 // ライブラリのインスタンスを生成
 $open_ai = new OpenAi($open_ai_key);

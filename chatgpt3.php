@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 function send_prompt($prompt = '')
 {
-    $API_KEY = 'sk-proj-tl2p07nvRfkmwTNV7ij9T3BlbkFJ13l70uSkUeacNWgdAs4k'; //ここにキーを入れてね。
+    $API_KEY = ''; //ここにキーを入れてね。
 
     if (!$prompt) {
         return;
@@ -48,7 +48,7 @@ function send_prompt($prompt = '')
 $prompt = 'ドラエモンの身長は何センチですか？'; //ここに質問を書いてね
 $chat_text = send_prompt($prompt);
 echo '
-         <script>
+        <script>
         document.addEventListener("DOMContentLoaded", function () {
             const text = \'こんにちは、私はChatGPTです。' . $chat_text . '\';//ここは回答です、アレンジしてね
             const outputElement = document.getElementById(\'output\');

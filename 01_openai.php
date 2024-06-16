@@ -17,7 +17,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 
     try {
         // APIキーの設定
-        $apikey = "sk-proj-I26wqT7e1fO4eDiVECKLT3BlbkFJA10ZTCo1K364RuFQIk09";
+        $apikey = "";
         $url = "https://api.openai.com/v1/chat/completions";
 
         // リクエストヘッダー

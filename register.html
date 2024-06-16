@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h2>Register</h2>
+    <form id="registerForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <label for="membership">Membership:</label>
+        <select id="membership" name="membership" required>
+            <option value="1">Paid</option>
+            <option value="2">Free</option>
+        </select><br>
+        <input type="submit" value="Register">
+    </form>
+
+    <script>
+        $("#registerForm").on("submit", function (event) {
+            event.preventDefault();
+            $.post("register.php", $(this).serialize(), function (data) {
+                alert(data);
+            });
+        });
+    </script>
+</body>
+
+</html>

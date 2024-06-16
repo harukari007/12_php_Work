@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 // APIキーとエンドポイントの設定
-$apikey = "sk-proj-tl2p07nvRfkmwTNV7ij9T3BlbkFJ13l70uSkUeacNWgdAs4k";  // ここにあなたのAPIキーを入力してください
+$apikey = "";  // ここにあなたのAPIキーを入力してください
 $url = "https://api.openai.com/v1/chat/completions";
 
 // リクエストヘッダー
