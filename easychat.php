@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php'; // remove this line if you use a PHP F
 
 use Orhanerday\OpenAi\OpenAi;
 
-$open_ai = new OpenAi('sk-proj-xlFeblZIHZqpp24OtWsbT3BlbkFJ7o7HVMN3W26yskDP0wxk');
+$open_ai = new OpenAi('');
 
 $complete = $open_ai->completion([
     'model' => 'gpt-3.5-turbo-instruct',
