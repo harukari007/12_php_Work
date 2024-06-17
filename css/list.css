@@ -1,0 +1,103 @@
+/* Reset some default browser styles */
+body,
+h1,
+p,
+div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+fieldset {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+legend {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0 1rem;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+form {
+    margin: 1rem 0;
+}
+
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+td a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+td a:hover {
+    color: #0056b3;
+}
