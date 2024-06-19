@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI();
+const openai = new OpenAI('');
 
 async function main() {
   const stream = await openai.chat.completions.create({

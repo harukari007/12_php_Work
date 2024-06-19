@@ -40,12 +40,11 @@ foreach ($result as $record) {
   $created_at_date = date('Y-m-d', strtotime($record["created_at"]));
   $output .= "
         <tr>
-            <td>{$created_at_date}</td>
-            <td>{$record["deadline"]}</td>
-            <td>{$record["todo"]}</td>
-            <td><a href='eatchat_edit.php?id={$record["id"]}'>編集</a></td>
-            <td><a href='eatchat_delete.php?id={$record["id"]}'>削除</a></td>
-        </tr>
+      <td>{$record["created_at"]}</td>
+      <td>{$record["todo"]}</td>
+      <td><a href='eatchat_edit.php?id={$record["id"]}'>編集</a></td>
+      <td><a href='eatchat_delete.php?id={$record["id"]}'>削除</a></td>
+    </tr>
     ";
 }
 
@@ -65,6 +64,7 @@ foreach ($result as $record) {
   <fieldset>
     <legend>食事リスト（一覧画面）<?= $_SESSION['username'] ?></legend>
     <a href="chat_index.php">入力画面</a>
+    <a href="calculate_bmr.php">基礎代謝確認画面</a>
     <a href="eatchat_logout.php">logout</a>
     <!-- フィルタボタンを追加 -->
     <form action="" method="GET">
@@ -78,8 +78,7 @@ foreach ($result as $record) {
       <thead>
         <tr>
           <th>登録日時</th>
-          <th>食事写真</th>
-          <th>カロリー</th>
+          <th>基礎代謝</th>
           <th>編集</th>
           <th>削除</th>
         </tr>

@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import fs from "fs";
 
-const openai = new OpenAI();
+const openai = new OpenAI('');
 
 async function main() {
   // 数学の問題の画像を読み込み、base64エンコードする

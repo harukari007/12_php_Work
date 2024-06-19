@@ -41,7 +41,7 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
         カロリー: <input type="text" name="todo" value="<?= $record["todo"] ?>">
       </div>
       <div>
-        食事写真: <input type="date" name="deadline" value="<?= $record["deadline"] ?>">
+        レシピ情報: <input type="date" name="deadline" value="<?= $record["deadline"] ?>">
       </div>
       <div>
         <button>submit</button>

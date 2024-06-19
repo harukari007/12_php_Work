@@ -52,7 +52,7 @@ a:hover {
 
 .box {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
 }
@@ -69,6 +69,12 @@ input[type="text"] {
 input[type="text"]:focus {
     border-color: #007bff;
     outline: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
 }
 
 button {
@@ -88,7 +94,17 @@ button:hover {
 }
 
 .textBox {
-    margin-top: 1rem;
+    width: 80%;
+    height: 300px;
+    margin: 20px auto;
+}
+#output {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 textarea {
@@ -101,4 +117,13 @@ textarea {
     resize: none;
     background-color: #f9f9f9;
     color: #333;
+}
+
+/* 基礎代謝結果のスタイル */
+.bmr-result {
+    font-size: 2rem;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    margin-top: 1rem;
 }

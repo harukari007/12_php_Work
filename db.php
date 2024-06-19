@@ -1,16 +1,17 @@
 <?php
-session_start();
-include('functions.php');
-check_session_id();
+include 'functions.php'; // functions.php でセッションが開始
 
+function connect_to_db()
+{
+    $dbn = 'mysql:dbname=gs_lab10_01;charset=utf8;port=3306;host=localhost';
+    $user = 'root';
+    $pwd = '';
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "user_info";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    try {
+        return new PDO($dbn, $user, $pwd);
+    } catch (PDOException $e) {
+        exit('DB Error:' . $e->getMessage());
+    }
 }
+
+$conn = connect_to_db();

@@ -4,17 +4,23 @@ require __DIR__ . '/vendor/autoload.php'; // remove this line if you use a PHP F
 
 use Orhanerday\OpenAi\OpenAi;
 
-if(isset($_GET["prompt"])){
+if (isset($_GET["prompt"])) {
 
-    $promt=$_GET["prompt"];
-
-    $open_ai = new OpenAi('');
+    $promt = $_GET["prompt"];
+    $open_ai = new OpenAi('');  //YOUR_OPEN_AI_KEY_HERE
 
     $complete = $open_ai->completion([
         'model' => 'gpt-3.5-turbo-instruct',
-        'prompt' => $promt,
+        'prompt' =>"あなたは管理栄養士でプロアスリート専門の管理栄養士です。{$prompt}で入力された嫌いな食べ物を排除して、
+        で計算結果に表示された基礎代謝のカロリーに合致する食事の献立を、朝、昼、夜、それぞれ、メニュー名、各メニューのカロリー、食材、調理時間、調理コスト、を創造して箇条書きにしてください。
+        \n＜献立＞:
+        \n朝食: 
+        \n昼食: 
+        \n夕食: 
+        \n総調理コスト:
+        \n総カロリー合計 ",
         'temperature' => 0.9,
-        'max_tokens' => 300,
+        'max_tokens' => 400,
         'frequency_penalty' => 0,
         'presence_penalty' => 0.6,
     ]);
@@ -27,6 +33,3 @@ if(isset($_GET["prompt"])){
         echo $response;
     }
 }
-
-
-

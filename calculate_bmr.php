@@ -1,58 +1,66 @@
 <?php
-
 session_start();
 include('functions.php');
 check_session_id();
 
+$conn = connect_to_db(); // データベース接続
 
-// include 'db.php';
+// ユーザー名をセッションから取得
+$username = $_SESSION['username'];
 
+// ユーザーIDをデータベースから取得
+$stmt = $conn->prepare("SELECT id FROM users_table WHERE username = ?");
+$stmt->execute([$username]);
+$user_id = $stmt->fetchColumn();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+// ユーザーの基本情報を取得
+$stmt = $conn->prepare("SELECT height, weight, gender, age FROM user_info WHERE user_id = ?");
+$stmt->execute([$user_id]);
+$user_info = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $stmt = $conn->prepare("SELECT height, weight, gender, age FROM user_info JOIN users ON user_info.user_id = users.id WHERE users.email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->bind_result($height, $weight, $gender, $age);
-    $stmt->fetch();
-    $stmt->close();
+// 基礎代謝率（BMR）の計算
+if ($user_info) {
+    $height = $user_info['height'];
+    $weight = $user_info['weight'];
+    $gender = $user_info['gender'];
+    $age = $user_info['age'];
 
-    if ($gender == "male") {
-        $bmr = 10 * $weight + 6.25 * $height - 5 * $age + 5;
+    if ($gender == 'male') {
+        $bmr = 88.36 + (13.4 * $weight) + (4.8 * $height) - (5.7 * $age);
     } else {
-        $bmr = 10 * $weight + 6.25 * $height - 5 * $age - 161;
+        $bmr = 447.6 + (9.2 * $weight) + (3.1 * $height) - (4.3 * $age);
     }
 
-    echo json_encode(array("bmr" => $bmr));
+    // BMRをBMR_DBに保存
+    $stmt = $conn->prepare("INSERT INTO BMR_DB (user_id, bmr, created_at) VALUES (?, ?, ?)");
+    $stmt->execute([$user_id, $bmr, date('Y-m-d H:i:s')]);
+} else {
+    echo "ユーザーの基本情報が見つかりませんでした。";
+    exit;
 }
 ?>
 
 <!DOCTYPE html>
+<html>
 
 <head>
-    <title>Calculate BMR</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/info_register.css ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>基礎代謝計算結果</title>
 </head>
 
 <body>
-    <h2>Calculate BMR</h2>
-    <form id="bmrForm">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
-        <input type="submit" value="Calculate BMR">
-    </form>
-    <div id="result"></div>
-
-    <script>
-        $("#bmrForm").on("submit", function(event) {
-            event.preventDefault();
-            $.post("calculate_bmr.php", $(this).serialize(), function(data) {
-                const result = JSON.parse(data);
-                $("#result").text("Your BMR is " + result.bmr);
-            });
-        });
-    </script>
+    <fieldset>
+        <a href="eatchat_read.php">一覧画面</a>
+        <a href="chat_index.php">食事情報入力画面</a>
+        <a href="eatchat_logout.php">ログアウト</a>
+        <legend>基礎代謝確認画面<br>【ユーザー名： <?= $_SESSION['username'] ?>】 </legend>
+        <p><?= htmlspecialchars($username) ?>さんの基礎代謝は<br>
+        <div class="bmr-result"><?= htmlspecialchars($bmr) ?> </div>カロリーです。
+        <div class="ex">（BMR）とは呼吸、発毛、消化、心臓の鼓動のような基本的な生命維持活動で体が消費するカロリー量のことです。</div>
+    </fieldset>
 </body>
 
 </html>

@@ -3,35 +3,6 @@ session_start();
 include('functions.php');
 check_session_id();
 
-
-// include 'db.php';
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $email = $_POST['email'];
-//     $height = $_POST['height'];
-//     $weight = $_POST['weight'];
-//     $gender = $_POST['gender'];
-//     $age = $_POST['age'];
-
-//     $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
-//     $stmt->bind_param("s", $email);
-//     $stmt->execute();
-//     $stmt->bind_result($user_id);
-//     $stmt->fetch();
-//     $stmt->close();
-
-//     $stmt = $conn->prepare("INSERT INTO user_info (user_id, height, weight, gender, age) VALUES (?, ?, ?, ?, ?)");
-//     $stmt->bind_param("iidss", $user_id, $height, $weight, $gender, $age);
-
-//     if ($stmt->execute()) {
-//         echo "Information added successfully!";
-//     } else {
-//         echo "Error: " . $stmt->error;
-//     }
-
-//     $stmt->close();
-//     $conn->close();
-// }
 ?>
 
 <!DOCTYPE html>
@@ -46,12 +17,13 @@ check_session_id();
 </head>
 
 <body>
+    </fieldset>
     <fieldset>
-        <a href="eatchat_read.php">一覧画面</a>
-        <a href="chat_index.php">食事情報入力画面</a>
+        <legend>基本情報登録画面<br>【ユーザー名： <?= $_SESSION['username'] ?>】 </legend>
+        <a href="eatchat_read.php">過去のレシピ一覧画面</a>
+        <a href="chat_index.php">レシピ生成画面</a>
         <a href="eatchat_logout.php">ログアウト</a>
 
-        <legend>基本情報登録画面【ユーザー名： <?= $_SESSION['username'] ?>】 </legend>
         <form id="infoForm" action="eatchat_create_addinfo.php" method="POST">
             <label for="email">メールアドレス:</label>
             <input type="email" id="email" name="email" required><br>
@@ -66,17 +38,9 @@ check_session_id();
             </select><br>
             <label for="age">年齢:</label>
             <input type="number" id="age" name="age" required><br>
-            <input type="submit" value="Add Info">
+            <input type="submit" value="登録する">
         </form>
     </fieldset>
-    <!-- <script>
-        $("#infoForm").on("submit", function(event) {
-            event.preventDefault();
-            $.post("eatchat_add_info.php", $(this).serialize(), function(data) {
-                alert(data);
-            });
-        });
-    </script> -->
 </body>
 
 </html>

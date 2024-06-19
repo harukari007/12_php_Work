@@ -42,7 +42,7 @@ if (!$user) {
     // 管理者かどうかを確認する
     $_SESSION['username'] = $user['username'];
     // ユーザー名
-    header("Location:chat_index.php");
+    header("Location:eatchat_add_info.php");
     exit();
 }
 

@@ -91,3 +91,56 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+/* モーダルの基本スタイル */
+.modal {
+    display: none;
+    /* デフォルトでは表示しない */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 基礎代謝結果のスタイル */
+.bmr-result {
+    font-size: 2rem;
+    /* 文字サイズを大きく */
+    font-weight: bold;
+    /* 太文字に */
+    color: red;
+    /* 文字色を赤に */
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.ex {
+    font-size: small;
+}
